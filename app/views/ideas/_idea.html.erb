@@ -4,7 +4,7 @@
   	<td width='350'><%= idea.description %></td>
   	<td> | Likes</td>
   	<td><%= idea.likes %></td>
-  	<td> | <%= link_to 'Like Idea', agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
+    <td> | <%= link_to 'Like Idea', agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
   	<td> | <%= link_to 'Destroy Idea', [idea.agenda, idea], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 </table>
