@@ -1,0 +1,88 @@
+// Place all the styles related to the Ideas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#header {
+    text-align:             center;
+	display:                block;
+	width:                  100%;
+	background:             #0099CC;
+	border-width:           3px;
+	font-size:              10pt;
+	height:                 20px;
+	padding:                0.3em;
+}
+
+#login_user {
+    text-align:             right;
+	display:                block;
+	width:                  100%;
+	background:             #0099CC;
+	border-width:           3px;
+	font-size:              10pt;
+	height:                 30px;
+	padding:                0.3em;
+}
+
+#menu {
+	background:             #0099CC;	
+    text-align:             center;
+	display:                block;
+	height:					30px;
+	width:					100%;
+	float:					left;
+}
+
+#content {
+	margin-top:				30px;
+	margin-left:			150px;
+	background-color:		#ffffff;
+	float:					left;
+	display:                block;
+}
+
+.round.create-button {
+  display:                block;
+  text-align:             center;
+  width:                  140px;
+  background:             #0099CC;
+  border-width:           3px;
+  font-size:              10pt;
+  height:                 25px;
+  padding:                0.2em;
+}
+  
+.round.create-button a {
+   color:                white;
+}
+
+#idea-description {
+    margin-top:           0.5em;
+	display:                block;
+	width:                  150px;
+	background:             #0099CC;
+	border-width:           3px;
+	font-size:              10pt;
+	height:                 150px;
+	padding:                0.3em;
+	margin-bottom:          1em;
+}
+
+#idea-title {
+    margin-top:           0.5em;
+	display:                block;
+	width:                  250px;
+	background:             #0099CC;
+	border-width:           3px;
+	font-size:              10pt;
+	height:                 40px;
+	padding:                0.3em;
+	margin-bottom:          1em;
+}
+
+.round.idea-separator {
+  display:                block;
+  width:                  600px;
+  background:             #0099CC;
+  height:                 2px;
+}

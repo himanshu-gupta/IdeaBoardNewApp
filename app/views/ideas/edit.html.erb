@@ -1,0 +1,12 @@
+<h1>Editing idea</h1>
+
+<%= form_for(@agenda,@agenda.ideas.build) do |f| %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

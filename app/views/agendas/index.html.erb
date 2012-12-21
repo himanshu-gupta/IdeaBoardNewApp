@@ -1,0 +1,25 @@
+<h2>List of Agendas</h2>
+
+
+<table> 
+<% @agendas.each do |agenda| %>
+  <tr>
+  	<td width='50'></td>
+    <td width='350'><%= agenda.title %></td>
+  	<td width='5'>by</td>
+  	<td width='75'><b><i><%= agenda.owner %></i></b></td>
+    <td> | <%= link_to 'Give Idea', agenda %></td>
+    <td> | <%= link_to 'Edit Agenda', edit_agenda_path(agenda) %></td>
+    <td> | <%= link_to 'Delete Agenda', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <tr>
+  	<td></td>
+    <td colspan=7><div class="idea-separator round"></div></td>
+  </tr>
+<% end %>
+  <tr height='10'>
+  </tr>
+  <tr>
+    <td colspan=7 align=center><div class="create-button round"><%= link_to 'New Agenda', new_agenda_path %></div></td>
+  </tr>
+</table>

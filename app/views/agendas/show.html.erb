@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <h2>Agenda</h2>
+  <tr height='10'></tr>
+  <tr>
+  	<td width='50'></td>
+  	<td width='350'><%= @agenda.title %></td>
+  	<td  width='5'>by</td>
+  	<td><b><i><%= @agenda.owner %></i></b></td>
+  </tr>
+</table>
+
+<h2>Ideas on Agenda</h2>
+<%= render @agenda.ideas %>
+
+<h2>Add an idea:</h2>
+<%= render "ideas/form" %>
+
+<!--
+<%= link_to 'Edit', edit_agenda_path(@agenda) %> |
+<%= link_to 'Back', agendas_path %>
+-->

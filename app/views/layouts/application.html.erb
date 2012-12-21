@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IdeaBlockApp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+  <h1>IdeaBlock!!!</h1>  
+</div>
+
+<div id="login_user">  
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?<br>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+</div>
+
+<div id="menu">
+  <b><div class="create-button round"><%= link_to "Home", agendas_path %></div></b><br>
+</div>
+
+
+<div id="content">
+  <%= yield %>
+</div>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
+
+</body>
+</html>
