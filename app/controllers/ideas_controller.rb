@@ -1,7 +1,7 @@
 class IdeasController < ApplicationController
   
 #  http_basic_authenticate_with :name => "admin@admin.com", :password => "admin123", :only => [:destroy, :update]
-  before_filter :authenticate_user!, :only => [:update, :destroy]
+  before_filter :authenticate_user!, :only => [:destroy]
   before_filter :define_agenda
   
   # GET /ideas

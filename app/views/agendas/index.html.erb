@@ -9,8 +9,10 @@
   	<td width='5'>by</td>
   	<td width='75'><b><i><%= agenda.owner %></i></b></td>
     <td> | <%= link_to 'Give Idea', agenda %></td>
-    <td> | <%= link_to 'Edit Agenda', edit_agenda_path(agenda) %></td>
-    <td> | <%= link_to 'Delete Agenda', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if user_signed_in? && current_user.role == "admin" %>
+      <td> | <%= link_to 'Edit Agenda', edit_agenda_path(agenda) %></td>
+      <td> | <%= link_to 'Delete Agenda', agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
   <tr>
   	<td></td>
