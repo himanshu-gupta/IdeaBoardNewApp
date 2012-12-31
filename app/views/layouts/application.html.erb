@@ -14,7 +14,7 @@
 
 <div id="login_user">  
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>    
+    Welcome <%= current_user.email %>!    
   <% end %>
 </div>
 
@@ -34,14 +34,21 @@
 </table>
 
 <table align='center'>
+<!--
   <tr>
-    <td><%= yield %></td>
+    <td>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+    </td>
+  </tr>
+-->
+  <tr>
+    <td>
+      <%= yield %>
+    </td>
   </tr>
 </table>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
 
 </body>
 </html>

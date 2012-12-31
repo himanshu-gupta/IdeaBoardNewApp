@@ -55,8 +55,9 @@ class IdeasController < ApplicationController
         format.html { redirect_to agenda_path(@agenda), notice: 'Idea was successfully created.' }
         format.json { render json: agenda_path(@agenda), status: :created, location: agenda_path(@agenda) }
       else
-        format.html { render action: "new" }
-        format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
+        format.html { redirect_to agenda_path(@agenda), notice: 'Description field can not be blank.' }
+#        format.html { render action: "new" }
+#        format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
       end
     end
   end
@@ -97,6 +98,6 @@ class IdeasController < ApplicationController
   end
   
   def define_agenda
-  @agenda =Agenda.find(params[:agenda_id])
+    @agenda =Agenda.find(params[:agenda_id])
   end
 end

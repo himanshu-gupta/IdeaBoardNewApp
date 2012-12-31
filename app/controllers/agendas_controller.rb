@@ -49,10 +49,10 @@ class AgendasController < ApplicationController
 
     respond_to do |format|
       if @agenda.save
-        format.html { redirect_to @agenda}
+        format.html { redirect_to @agenda, notice: 'Agenda was successfully created.'}
         format.json { render json: @agenda, status: :created, location: @agenda }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new"}
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
       end
     end
@@ -81,7 +81,7 @@ class AgendasController < ApplicationController
     @agenda.destroy
 
     respond_to do |format|
-      format.html { redirect_to agendas_url }
+      format.html { redirect_to agendas_url, notice: 'Agenda was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
