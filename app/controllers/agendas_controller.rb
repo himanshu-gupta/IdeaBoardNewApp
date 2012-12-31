@@ -49,10 +49,13 @@ class AgendasController < ApplicationController
 
     respond_to do |format|
       if @agenda.save
-        format.html { redirect_to @agenda, notice: 'Agenda was successfully created.'}
+        format.html { redirect_to @agenda, notice: 'Bingo!!! Agenda created successfully.'}
         format.json { render json: @agenda, status: :created, location: @agenda }
       else
-        format.html { render action: "new"}
+        format.html { 
+          flash[:notice] = 'Title field can not be left blank.'
+          render action: "new"
+        }
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
       end
     end
@@ -65,10 +68,13 @@ class AgendasController < ApplicationController
 
     respond_to do |format|
       if @agenda.update_attributes(params[:agenda])
-        format.html { redirect_to @agenda}
+        format.html { redirect_to @agenda, notice: 'Agenda was successfully updated.'}
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { 
+          flash[:notice] = 'Title field can not be left blank.'
+          render action: "edit" 
+         }
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
       end
     end
@@ -81,7 +87,10 @@ class AgendasController < ApplicationController
     @agenda.destroy
 
     respond_to do |format|
-      format.html { redirect_to agendas_url, notice: 'Agenda was successfully destroyed.' }
+      format.html { 
+        flash[:notice] = 'Agenda was successfully deleted.'
+        redirect_to agendas_url
+      }
       format.json { head :no_content }
     end
   end
