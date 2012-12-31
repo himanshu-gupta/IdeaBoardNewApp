@@ -14,21 +14,30 @@
 
 <div id="login_user">  
   <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?<br>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
+    Signed in as <%= current_user.email %>    
   <% end %>
 </div>
 
-<div id="menu">
-  <b><div class="create-button round"><%= link_to "Home", agendas_path %></div></b><br>
-</div>
+<table>
+  <tr>
+    <td>
+      <b><div class="create-button round"><%= link_to "Home", agendas_path %></div></b>
+    </td>
+    <td>
+      <% if user_signed_in? %>
+        <b><div class="create-button round"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div></b>
+      <% else %>
+        <b><div class="create-button round"><%= link_to "Sign in", new_user_session_path %></div></b>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
-
-<div id="content">
-  <%= yield %>
-</div>
+<table align='center'>
+  <tr>
+    <td><%= yield %></td>
+  </tr>
+</table>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
