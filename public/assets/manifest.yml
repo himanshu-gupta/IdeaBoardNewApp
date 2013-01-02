@@ -1,7 +1,11 @@
 ---
+iconDelete.gif: iconDelete-57e9ef0505403c1e8e8691f6910148c0.gif
+iconDelete/index.gif: iconDelete-57e9ef0505403c1e8e8691f6910148c0.gif
+like.gif: like-4b7734665002c84dcc99879cb9ac16d8.gif
+like/index.gif: like-4b7734665002c84dcc99879cb9ac16d8.gif
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 application.js: application-881c7be0f94073ee224b791f9deb4d90.js
 application/index.js: application-881c7be0f94073ee224b791f9deb4d90.js
-application.css: application-e5ecdd371f79b5585b141becfde0888a.css
-application/index.css: application-e5ecdd371f79b5585b141becfde0888a.css
+application.css: application-50cf4915850c592008d69b388ba0ced8.css
+application/index.css: application-50cf4915850c592008d69b388ba0ced8.css
