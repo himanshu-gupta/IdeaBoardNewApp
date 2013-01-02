@@ -23,9 +23,11 @@
     <td>
       <b><div class="create-button round"><%= link_to "Home", agendas_path %></div></b>
     </td>
+    <% if !user_signed_in? %>
     <td>
       <b><div class="create-button round"><%= link_to "Sign up", new_user_registration_path %></br>New User!</div></b>
     </td>
+    <% end %>
     <td>
       <% if user_signed_in? %>
         <b><div class="create-button round"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></div></b>
