@@ -55,7 +55,10 @@ class IdeasController < ApplicationController
         format.html { redirect_to agenda_path(@agenda), notice: 'Bingo!!! Your idea has been accepted.' }
         format.json { render json: agenda_path(@agenda), status: :created, location: agenda_path(@agenda) }
       else
-        format.html { redirect_to agenda_path(@agenda), notice: 'Idea description can not be left blank.' }
+        format.html {  
+          flash[:error] = 'Idea description can not be left blank.'
+          redirect_to agenda_path(@agenda)
+        }
 #        format.html { render action: "new" }
 #        format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
       end
@@ -92,7 +95,7 @@ class IdeasController < ApplicationController
     @idea = @agenda.ideas.find(params[:id])
     @idea.destroy
 	respond_to do |format|
-      format.html { redirect_to agenda_path(@agenda), notice: 'Idea was successfully deleted.'  }
+      format.html { redirect_to agenda_path(@agenda), notice: 'Idea deleted successfully.'  }
       format.json { head :no_content }
     end
   end

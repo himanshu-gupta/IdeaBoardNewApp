@@ -2,27 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+
 #header {
     text-align:             center;
-	display:                block;
 	width:                  100%;
 	background:             #0099CC;
-	border-width:           3px;
-	font-size:              10pt;
-	height:                 20px;
-	padding:                0.3em;
+	font-size:              20pt;
+	height:                 60px;
+	padding:                8px;
 }
 
 #login_user {
     text-align:             left;
+	width:                  100%;
+	background:             #0099CC;
+	font-size:              10pt;
+	height:                 15px;
+	color:            	    white;
+	padding:                2px;
+}
+
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+}
+
+#footer {
+    position:				absolute;
+    bottom:					0;
+    text-align:             center;
 	display:                block;
 	width:                  100%;
 	background:             #0099CC;
-	border-width:           3px;
 	font-size:              10pt;
-	height:                 30px;
+	height:                 60px;
 	padding:                0.3em;
-	color:            	    white;
 }
 
 #menu {
@@ -32,14 +57,6 @@
 	height:					30px;
 	width:					100%;
 	float:					left;
-}
-
-#content {
-	margin-top:				30px;
-	margin-left:			150px;
-	background-color:		#ffffff;
-	float:					left;
-	display:                block;
 }
 
 .round.create-button {
@@ -57,6 +74,18 @@
    color:                white;
 }
 
+#idea-description-old {
+    margin-top:           0.5em;
+	display:                block;
+	width:                  150px;
+	background:             #0099CC;
+	border-width:           3px;
+	font-size:              10pt;
+	height:                 150px;
+	padding:                0.3em;
+	margin-bottom:          1em;
+}
+
 #idea-description {
     margin-top:           0.5em;
 	display:                block;
@@ -69,21 +98,12 @@
 	margin-bottom:          1em;
 }
 
-#idea-title {
-    margin-top:           0.5em;
-	display:                block;
-	width:                  250px;
-	background:             #0099CC;
-	border-width:           3px;
-	font-size:              10pt;
-	height:                 40px;
-	padding:                0.3em;
-	margin-bottom:          1em;
-}
-
 .round.idea-separator {
   display:                block;
-  width:                  600px;
   background:             #0099CC;
   height:                 2px;
+}
+
+#add-idea {	
+	border-width:           3px;
 }

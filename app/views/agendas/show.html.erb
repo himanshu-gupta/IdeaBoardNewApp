@@ -1,5 +1,7 @@
+<!--
 <p id="notice"><%= notice %></p>
-
+-->
+<!--
 <table>
   <h2>Agenda</h2>
   <tr height='10'></tr>
@@ -10,14 +12,15 @@
   	<td><b><i><%= @agenda.owner %></i></b></td>
   </tr>
 </table>
+-->
+<div id="agenda_title">
+	<h1><i><center><%= @agenda.title %></center></i></h1>
+</div>
 
-<h2>Ideas on Agenda</h2>
 <%= render @agenda.ideas %>
 
-<h2>Add an idea:</h2>
+<br><br><br>
+<%= image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea')%>
+<b>Have an idea? Please go ahead :)</b>
 <%= render "ideas/form" %>
 
-<!--
-<%= link_to 'Edit', edit_agenda_path(@agenda) %> |
-<%= link_to 'Back', agendas_path %>
--->

@@ -53,7 +53,7 @@ class AgendasController < ApplicationController
         format.json { render json: @agenda, status: :created, location: @agenda }
       else
         format.html { 
-          flash[:notice] = 'Title field can not be left blank.'
+          flash[:error] = 'Title field can not be left blank.'
           render action: "new"
         }
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
@@ -68,11 +68,11 @@ class AgendasController < ApplicationController
 
     respond_to do |format|
       if @agenda.update_attributes(params[:agenda])
-        format.html { redirect_to @agenda, notice: 'Agenda was successfully updated.'}
+        format.html { redirect_to @agenda, notice: 'Agenda updated successfully.'}
         format.json { head :no_content }
       else
         format.html { 
-          flash[:notice] = 'Title field can not be left blank.'
+          flash[:error] = 'Title field can not be left blank.'
           render action: "edit" 
          }
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
@@ -88,7 +88,7 @@ class AgendasController < ApplicationController
 
     respond_to do |format|
       format.html { 
-        flash[:notice] = 'Agenda was successfully deleted.'
+        flash[:notice] = 'Agenda deleted successfully .'
         redirect_to agendas_url
       }
       format.json { head :no_content }

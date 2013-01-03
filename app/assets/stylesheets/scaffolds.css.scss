@@ -19,9 +19,9 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #fff;
   &:visited {
-    color: #666;
+    color: red;
   }
   &:hover {
     color: #fff;
@@ -37,6 +37,15 @@ div {
 }
 
 #notice {
+  padding: 2px;
+  background-color: #EEEEEE;
+  display: table;
+  color: green;
+  font-size: 12px;
+  list-style: square;
+}
+
+#error {
   padding: 2px;
   background-color: #EEEEEE;
   display: table;

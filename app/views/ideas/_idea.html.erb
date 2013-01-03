@@ -1,7 +1,6 @@
 <table>
   <tr>
-  	<td width='50'></td>
-  	<td width='350'><%= idea.description %></td>
+  	<td width='50' bgcolor='#eee'><%= idea.description %></td>
   	<td> | Likes</td>
   	<td><%= idea.likes %></td>
     <td> | <%= link_to image_tag( 'like.gif', :border=>0, :title=>'Like'), agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
@@ -9,11 +8,13 @@
       <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), [idea.agenda, idea], :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>
-</table>
-
-<table>
   <tr>
-  	<td width='50'></td>
-  	<td width='350'><div class="idea-separator round"></div></td>
+    <td><div class="idea-separator round"></div></td>    
+    <td></td>
+    <td></td>
+    <td></td>
+    <% if user_signed_in? && current_user.role == "admin" %>
+      <td></td>
+    <% end %>
   </tr>
 </table>
