@@ -1,6 +1,6 @@
 <table>
   <tr>
-  	<td width='50' bgcolor='#eee'><%= idea.description %></td>
+  	<td width='550' bgcolor='#eee'><%= idea.description %></td>
   	<td> | Likes</td>
   	<td><%= idea.likes %></td>
     <td> | <%= link_to image_tag( 'like.gif', :border=>0, :title=>'Like'), agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
