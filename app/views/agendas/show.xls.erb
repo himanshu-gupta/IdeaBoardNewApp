@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Ideas">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Ideas for Agenda<b><i><%= @agenda.title %></i></b></Data></Cell>
+        <Cell><Data ss:Type="String"></Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">Description</Data></Cell>
+        <Cell><Data ss:Type="String">Likes</Data></Cell>
+      </Row>
+    <% @ideas.each do |idea| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= idea.description %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= idea.likes %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

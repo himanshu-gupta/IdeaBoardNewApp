@@ -6,11 +6,12 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.all
-
+    @agendas = Agenda.order("title").page(params[:page]).per(5)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agendas }
+      format.csv { send_data @agendas.to_csv }
+      format.xls
     end
   end
 
@@ -18,11 +19,12 @@ class AgendasController < ApplicationController
   # GET /agendas/1.json
   def show
     @agenda = Agenda.find(params[:id])
-    @ideas= @agenda.ideas 
-	
+    @ideas= @agenda.ideas
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @agenda }
+      format.csv { send_data @agendas.to_csv }
+      format.xls
     end
   end
 
@@ -30,7 +32,6 @@ class AgendasController < ApplicationController
   # GET /agendas/new.json
   def new
     @agenda = Agenda.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @agenda }
@@ -46,7 +47,6 @@ class AgendasController < ApplicationController
   # POST /agendas.json
   def create
     @agenda = Agenda.new(params[:agenda])
-
     respond_to do |format|
       if @agenda.save
         format.html { redirect_to @agenda, notice: 'Bingo!!! Agenda created successfully.'}
@@ -65,7 +65,6 @@ class AgendasController < ApplicationController
   # PUT /agendas/1.json
   def update
     @agenda = Agenda.find(params[:id])
-
     respond_to do |format|
       if @agenda.update_attributes(params[:agenda])
         format.html { redirect_to @agenda, notice: 'Agenda updated successfully.'}
@@ -85,7 +84,6 @@ class AgendasController < ApplicationController
   def destroy
     @agenda = Agenda.find(params[:id])
     @agenda.destroy
-
     respond_to do |format|
       format.html { 
         flash[:notice] = 'Agenda deleted successfully .'

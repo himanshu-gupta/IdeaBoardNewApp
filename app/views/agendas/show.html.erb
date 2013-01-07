@@ -1,21 +1,11 @@
-<!--
-<p id="notice"><%= notice %></p>
--->
-<!--
-<table>
-  <h2>Agenda</h2>
-  <tr height='10'></tr>
-  <tr>
-  	<td width='50'></td>
-  	<td width='350'><%= @agenda.title %></td>
-  	<td  width='5'>by</td>
-  	<td><b><i><%= @agenda.owner %></i></b></td>
-  </tr>
-</table>
--->
 <div id="agenda_title">
 	<h1><i><center><%= @agenda.title %></center></i></h1>
 </div>
+
+<p>
+  <b>Export Ideas:</b>
+  <%= link_to "Excel Sheet", agenda_path(format: "xls", method: "show") %>
+</p>
 
 <%= render @agenda.ideas %>
 
@@ -23,4 +13,3 @@
 <%= image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea')%>
 <b>Have an idea? Please go ahead :)</b>
 <%= render "ideas/form" %>
-

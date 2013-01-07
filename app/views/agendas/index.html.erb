@@ -1,7 +1,10 @@
-<!--
-<p id="notice"><%= notice %></p>
--->
 <h2>List of Agendas</h2>
+
+<p>
+  <b>Export Agendas:</b>
+  <%= link_to "Excel Format", agendas_path(format: "xls") %>
+</p>
+
 <table> 
 <% @agendas.each do |agenda| %>
   <tr>
@@ -26,3 +29,4 @@
     <td colspan=7 align=center><div class="create-button round"><%= link_to 'New Agenda', new_agenda_path %></div></td>
   </tr>
 </table>
+<%= paginate @agendas %>
