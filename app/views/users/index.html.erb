@@ -1,0 +1,23 @@
+<h2>List of Users</h2>
+<table> 
+<% @users.each do |user| %>
+  <tr>
+  	<td width='50'></td>
+    <td width='350'><%= user.email %></td>
+  	<td width='75'><b><i><%= user.role %></i></b></td>
+    <td> | <%= link_to 'Show', user, method: :get %></td>
+    <td> | <%= link_to 'Edit', edit_user_path(user) %></td>
+    <td> | <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <tr>
+  	<td></td>
+    <td colspan=4><div class="idea-separator round"></div></td>
+  </tr>
+<% end %>
+  <tr height='10'>
+  </tr>
+  <tr>
+    <td colspan=4 align=center><div class="create-button round"><%= link_to 'New User', new_user_path %></div>
+    </td>
+  </tr>
+</table>

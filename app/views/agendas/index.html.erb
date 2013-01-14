@@ -6,23 +6,31 @@
 </p>
 
 <table> 
-<% @agendas.each do |agenda| %>
+  <% @@count = 0 %>
+  <% @agendas.each do |agenda| %>
   <tr>
   	<td width='50'></td>
+    <% if @@count % 2 == 0%>
+    <td width='350' bgcolor='#eee'><%= agenda.title %></td>
+    <td width='5' bgcolor='#eee'>by</td>
+    <td width='75' bgcolor='#eee'><b><i><%= agenda.owner %></i></b></td>
+    <% else %>
     <td width='350'><%= agenda.title %></td>
-  	<td width='5'>by</td>
-  	<td width='75'><b><i><%= agenda.owner %></i></b></td>
+    <td width='5'>by</td>
+    <td width='75'><b><i><%= agenda.owner %></i></b></td>
+    <% end %>
     <td> | <%= link_to image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea', :size=>'18x18'), agenda %></td>
     <% if user_signed_in? && current_user.role == "admin" %>
       <td> | <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit'), edit_agenda_path(agenda) %></td>
       <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
-  </tr>
+  </tr><!--
   <tr>
   	<td></td>
     <td colspan=7><div class="idea-separator round"></div></td>
-  </tr>
-<% end %>
+  </tr>-->
+  <% @@count = @@count + 1 %>
+  <% end %>
   <tr height='10'>
   </tr>
   <tr>

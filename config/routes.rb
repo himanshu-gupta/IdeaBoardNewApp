@@ -1,6 +1,9 @@
-IdeaBlockApp::Application.routes.draw do
+IdeaBlockApp::Application.routes.draw do  
+  
+  root :to => 'agendas#index'
   
   devise_for :users
+  resources :users
 
   resources :agendas do
 	 resources :ideas
@@ -55,7 +58,7 @@ IdeaBlockApp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'agendas#index'
+  # root :to => 'agendas#index'
 
   # See how all your routes lay out with "rake routes"
 

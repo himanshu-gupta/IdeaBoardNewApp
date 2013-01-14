@@ -27,14 +27,17 @@
       <td width='50'></td>
       <% if !user_signed_in? %>
       <td>
-       <b><div class="create-button round"><%= link_to "Sign up", new_user_registration_path %></br>New User!</div></b>
+        <b><div class="create-button round"><%= link_to "Sign up", new_user_registration_path %></br>New User!</div></b>
       </td>
-      <% end %>
       <td>
-        <% if !user_signed_in? %>
          <b><div class="create-button round"><%= link_to "Sign in", new_user_session_path %></div></b>
        <% end %>
       </td>
+      <% if user_signed_in? && current_user.role == "admin" %>
+      <td>
+        <b><div class="create-button round"><%= link_to "Admin", users_path %></div></b>
+      </td>
+      <% end %>
    </tr>
   </table>
   <table align='center'>

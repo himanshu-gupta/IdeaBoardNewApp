@@ -7,6 +7,11 @@ gem 'rails', '3.2.9'
 
 gem 'sqlite3', :group => [:development,:test]
 gem 'pg', :group => :production
+
+gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
+gem 'rspec-on-rails-matchers'
+gem "shoulda-matchers"
+
 gem 'devise'
 gem 'kaminari'
 
