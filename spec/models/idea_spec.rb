@@ -25,7 +25,7 @@ describe Idea do
   # using shoulda-matchers gem
   it "should belong to a group" do
       @idea = Idea.new
-      @idea.should belongs_to(:agenda)
+      @idea.should belong_to(:agenda)
   end
 
 end
