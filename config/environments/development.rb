@@ -4,12 +4,15 @@ IdeaBlockApp::Application.configure do
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.default :mime_version => "1.0"
   config.action_mailer.default :implicit_parts_order => [ "text/html", "text/plain"]
-  
+
   config.action_mailer.smtp_settings = {
-  :address => "mailhub.mckinsey.com",
-  :domain =>  "mailhub.mckinsey.com",
-  :content_type   => "utf-8",
-  :port => 25
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :domain => "example.com",
+  :authentication => "plain",
+  :enable_starttls_auto => true,
+  :user_name => "ruby12.ab@gmail.com",
+  :password => "ruby12ab"
   }
 
   # In the development environment your application's code is reloaded on

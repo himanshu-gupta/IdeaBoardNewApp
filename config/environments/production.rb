@@ -1,5 +1,19 @@
 IdeaBlockApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  config.action_mailer.default_url_options = { :host => 'http://idea-board.herokuapp.com/:3000' }
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default :mime_version => "1.0"
+  config.action_mailer.default :implicit_parts_order => [ "text/html", "text/plain"]
+
+  config.action_mailer.smtp_settings = {
+  :address => "smtp.gmail.com",
+  :port: => 587,
+  :domain: => "example.com",
+  :authentication: => "plain",
+  :enable_starttls_auto: => true,
+  :user_name: => 'ruby12.ab@gmail.com',
+  :password: => 'ruby12ab'
+  }
 
   # Code is not reloaded between requests
   config.cache_classes = true
