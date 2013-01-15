@@ -12,19 +12,6 @@ describe AgendasController do
     }
   end
 
-  def valid_session
-    {
-      :email => 'admin@admin.com',
-      :password => 'admin123'
-    }
-  end
-
-  def http_login
-    user = 'admin@admin.com'
-    pw = 'admin123'
-    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(user,pw)
-  end 
-
   describe "GET index" do
     it "assigns all agendas as @agendas" do
       agenda = Agenda.create! valid_attributes
@@ -119,7 +106,6 @@ describe AgendasController do
     describe "with valid params" do
       it "updates the requested agenda" do
         agenda = Agenda.create! valid_attributes
-        p agenda
         # Assuming there are no other agendas in the database, this
         # specifies that the Agenda created on the previous line
         # receives the :update_attributes message with whatever params are
