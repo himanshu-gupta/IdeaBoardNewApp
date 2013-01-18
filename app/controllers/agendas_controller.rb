@@ -6,11 +6,11 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.order("title").page(params[:page]).per(5)
+    @agendas = Agenda.order("agendas.created_at DESC").page(params[:page]).per(15)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agendas }
-      format.csv { send_data @agendas.to_csv }
+      format.csv { send_data @agendas.agendas_to_csv }
       format.xls
     end
   end
@@ -19,11 +19,14 @@ class AgendasController < ApplicationController
   # GET /agendas/1.json
   def show
     @agenda = Agenda.find(params[:id])
-    @ideas= @agenda.ideas
+    @ideas= @agenda.ideas #.where("")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @agenda }
-      format.csv { send_data @agendas.to_csv }
+      format.csv {  send_data @ideas.ideas_to_csv
+#        , :type => 'text/csv; charset=iso-8859-1; header=present', 
+#          :disposition => "attachment; filename=ideas.csv" 
+      }
       format.xls
     end
   end
@@ -49,7 +52,7 @@ class AgendasController < ApplicationController
     @agenda = Agenda.new(params[:agenda])
     respond_to do |format|
       if @agenda.save
-        format.html { redirect_to @agenda, notice: 'Bingo!!! Agenda created successfully.'}
+        format.html { redirect_to @agenda, notice: 'Congratulations!!! Topic created successfully.'}
         format.json { render json: @agenda, status: :created, location: @agenda }
       else
         format.html { 
@@ -67,7 +70,7 @@ class AgendasController < ApplicationController
     @agenda = Agenda.find(params[:id])
     respond_to do |format|
       if @agenda.update_attributes(params[:agenda])
-        format.html { redirect_to @agenda, notice: 'Agenda updated successfully.'}
+        format.html { redirect_to @agenda, notice: 'Topic updated successfully.'}
         format.json { head :no_content }
       else
         format.html { 
@@ -86,10 +89,11 @@ class AgendasController < ApplicationController
     @agenda.destroy
     respond_to do |format|
       format.html { 
-        flash[:notice] = 'Agenda deleted successfully .'
+        flash[:notice] = 'Topic deleted successfully .'
         redirect_to agendas_url
       }
       format.json { head :no_content }
     end
   end
+
 end

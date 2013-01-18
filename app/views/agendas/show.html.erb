@@ -3,13 +3,16 @@
 </div>
 
 <p>
-  <b>Export Ideas:</b>
-  <%= link_to "Excel Sheet", agenda_path(format: "xls", method: "show") %>
+  <b>Ideas so far : </b>
+  <b><%= @agenda.ideas.count %></b>
+  <%= link_to "(Export to Excel)", agenda_path(format: "xls", method: "show") %>
 </p>
 
 <%= render @agenda.ideas %>
 
-<br><br><br>
+<br><br>
 <%= image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea')%>
 <b>Have an idea? Please go ahead :)</b>
 <%= render "ideas/form" %>
+
+<%= link_to 'Back', agendas_path %>

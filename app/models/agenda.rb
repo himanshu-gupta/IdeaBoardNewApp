@@ -4,7 +4,7 @@ class Agenda < ActiveRecord::Base
   validates :title, :presence => true,
                     :length => { :minimum => 1 }
 
-  def self.to_csv(options = {})
+  def self.agendas_to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
       all.each do |agenda|
@@ -12,4 +12,16 @@ class Agenda < ActiveRecord::Base
       end
     end
   end
+
+  def self.ideas_to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["Description", "", "Likes"]
+      csv << []
+      @ideas.each do |idea|
+        csv << [idea.description]
+        csv << []
+      end
+    end
+  end
+
 end

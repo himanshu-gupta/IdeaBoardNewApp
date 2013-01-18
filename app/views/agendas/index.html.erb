@@ -1,8 +1,8 @@
-<h2>List of Agendas</h2>
+<h2>List of Topics</h2>
 
 <p>
-  <b>Export Agendas:</b>
-  <%= link_to "Excel Format", agendas_path(format: "xls") %>
+  <%= link_to "Export to CSV", agendas_path(format: "csv") %> |
+  <%= link_to "Export to Excel", agendas_path(format: "xls") %>
 </p>
 
 <table> 
@@ -19,7 +19,7 @@
     <td width='5'>by</td>
     <td width='75'><b><i><%= agenda.owner %></i></b></td>
     <% end %>
-    <td> | <%= link_to image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea', :size=>'18x18'), agenda %></td>
+    <td> | <%= link_to image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea', :size=>'18x18'), agenda %> <b>(<%= agenda.ideas.count%> ideas)</b></td>
     <% if user_signed_in? && current_user.role == "admin" %>
       <td> | <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit'), edit_agenda_path(agenda) %></td>
       <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,7 +34,7 @@
   <tr height='10'>
   </tr>
   <tr>
-    <td colspan=7 align=center><div class="create-button round"><%= link_to 'New Agenda', new_agenda_path %></div></td>
+    <td colspan=7 align=center><div class="create-button round"><%= link_to 'New Topic', new_agenda_path %></div></td>
   </tr>
 </table>
 <%= paginate @agendas %>

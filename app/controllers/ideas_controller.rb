@@ -3,27 +3,6 @@ class IdeasController < ApplicationController
   # http_basic_authenticate_with :name => "admin@admin.com", :password => "admin123", :only => [:destroy, :update]
   before_filter :authenticate_user!, :only => [:destroy]
   before_filter :define_agenda
-  
-  # GET /ideas
-  # GET /ideas.json
-  def index
-    @ideas = @agenda.ideas
-    p @ideas
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ideas }
-    end
-  end
-
-  # GET /ideas/1
-  # GET /ideas/1.json
-  def show
-    @idea = @agenda.ideas.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @idea }
-    end
-  end
 
   # GET /ideas/new
   # GET /ideas/new.json
@@ -33,12 +12,6 @@ class IdeasController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @idea }
     end
-  end
-
-  # GET /ideas/1/edit
-  def edit    
-    @idea = @agenda.ideas.find(params[:id])
-    # @idea = Idea.find(params[:id])
   end
 
   # POST /ideas
@@ -54,8 +27,7 @@ class IdeasController < ApplicationController
           flash[:error] = 'Idea description can not be left blank.'
           redirect_to agenda_path(@agenda)
         }
-        # format.html { render action: "new" }
-        # format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
+        format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
       end
     end
   end

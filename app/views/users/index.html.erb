@@ -3,7 +3,8 @@
 <% @users.each do |user| %>
   <tr>
   	<td width='50'></td>
-    <td width='350'><%= user.email %></td>
+    <td width='320'><%= user.email %></td>
+    <td width='30'>is</td>
   	<td width='75'><b><i><%= user.role %></i></b></td>
     <td> | <%= link_to 'Show', user, method: :get %></td>
     <td> | <%= link_to 'Edit', edit_user_path(user) %></td>
@@ -11,7 +12,7 @@
   </tr>
   <tr>
   	<td></td>
-    <td colspan=6><div class="idea-separator round"></div></td>
+    <td colspan=7><div class="idea-separator round"></div></td>
   </tr>
 <% end %>
 </table>
