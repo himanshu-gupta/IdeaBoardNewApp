@@ -4,7 +4,9 @@
   	<td> | Likes</td>
     <% idea.likes == nil ? idea.likes = 0 : idea.likes = idea.likes %>
     <td><%= idea.likes %></td>
-    <td> | <%= link_to image_tag( 'like.gif', :border=>0, :title=>'Like'), agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
+    <% if user_signed_in? %>
+      <td> | <%= link_to image_tag( 'like.gif', :border=>0, :title=>'Like'), agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
+    <% end %>
     <% if user_signed_in? && current_user.role == "admin" %>
       <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), [idea.agenda, idea], :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
@@ -13,7 +15,9 @@
     <td><div class="idea-separator round"></div></td>    
     <td></td>
     <td></td>
-    <td></td>
+    <% if user_signed_in? %>
+      <td></td>
+    <% end %>
     <% if user_signed_in? && current_user.role == "admin" %>
       <td></td>
     <% end %>

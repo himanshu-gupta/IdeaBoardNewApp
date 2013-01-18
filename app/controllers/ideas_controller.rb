@@ -35,20 +35,24 @@ class IdeasController < ApplicationController
   # PUT /ideas/1
   # PUT /ideas/1.json
   def update        
-    @idea = @agenda.ideas.find(params[:id])    
-    if @idea.likes == nil
-      @idea.likes = 1
-    else
-      @idea.likes += 1
-    end	
-    respond_to do |format|
-      if @idea.update_attribute(:likes, @idea.likes)
-        format.html { redirect_to agenda_path(@agenda)}
-        format.json { head :no_content }
+    @idea = @agenda.ideas.find(params[:id])
+    @like = Like.find_by_sql(["select * from likes where user_id = ? and agenda_id = ?  and idea_id = ?", current_user.id, @agenda.id, @idea.id])
+    if @like.size == 0
+      @like_new = Like.new(params[:like])
+      @like_new.user_id = current_user.id
+      @like_new.agenda_id = @agenda.id
+      @like_new.idea_id = @idea.id
+      @like_new.save
+      if @idea.likes == nil
+        @idea.likes = 1
       else
-        format.html { render action: "edit" }
-        format.json { render json: agenda_path(@agenda).errors, status: :unprocessable_entity }
-      end
+        @idea.likes += 1
+      end 
+      @idea.update_attribute(:likes, @idea.likes)
+      redirect_to agenda_path(@agenda)
+    else
+      flash[:error] = 'You have already liked the idea.'
+      redirect_to agenda_path(@agenda)
     end
   end
 

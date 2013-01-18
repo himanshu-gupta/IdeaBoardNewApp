@@ -11,6 +11,7 @@ gem 'pg', :group => :production
 gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
 gem 'rspec-on-rails-matchers'
 gem "shoulda-matchers"
+gem 'factory_girl'
 
 gem 'devise'
 gem 'kaminari'
