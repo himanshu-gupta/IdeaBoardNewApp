@@ -7,17 +7,22 @@
   <Worksheet ss:Name="Ideas">
     <Table>
       <Row>
+        <Cell></Cell>
         <Cell><Data ss:Type="String">Ideas for "<%= @agenda.title %>"</Data></Cell>
-        <Cell><Data ss:Type="String"></Data></Cell>
+        <Cell></Cell>
       </Row>
       <Row>
       </Row>
       <Row>
+        <Cell><Data ss:Type="String">Idea Id</Data></Cell>
         <Cell><Data ss:Type="String">Idea Description</Data></Cell>
         <Cell><Data ss:Type="String">No. of Likes</Data></Cell>
       </Row>
-    <% @ideas.each do |idea| %>
       <Row>
+      </Row>
+      <% @ideas.each do |idea| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= idea.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= idea.description %></Data></Cell>
         <% idea.likes == nil ? idea.likes = 0 : idea.likes = idea.likes %>
         <Cell><Data ss:Type="String"><%= idea.likes %></Data></Cell>

@@ -6,9 +6,9 @@
     <td width='320'><%= user.email %></td>
     <td width='30'>is</td>
   	<td width='75'><b><i><%= user.role %></i></b></td>
-    <td> | <%= link_to 'Show', user, method: :get %></td>
-    <td> | <%= link_to 'Edit', edit_user_path(user) %></td>
-    <td> | <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td> | <%= link_to image_tag( 'show.gif', :border=>0, :title=>'User Information'), user, method: :get %></td>
+    <td> | <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit'), edit_user_path(user) %></td>
+    <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <tr>
   	<td></td>
