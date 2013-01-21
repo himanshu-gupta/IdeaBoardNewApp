@@ -1,17 +1,8 @@
-<!--
-<p id="notice"><%= notice %></p>
--->
-<p>
-  <b>Description:</b>
-  <%= @idea.description %>
-</p>
-
-<p>
-  <b>Likes:</b>
-  <%= @idea.likes %>
-</p>
-
-<p>
-  <b>Agenda:</b>
-  <%= @idea.agenda %>
-</p>
+<table>
+  <tr>
+  	<td width='550' bgcolor='#eee'><%= @idea.description %></td>
+  </tr> 
+  <tr>
+  	<td align='center'><%= link_to 'Back', agenda_path(@agenda.id) %></td>
+  </tr> 
+</table>

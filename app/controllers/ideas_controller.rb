@@ -4,6 +4,14 @@ class IdeasController < ApplicationController
   before_filter :authenticate_user!, :only => [:destroy]
   before_filter :define_agenda
 
+  def show
+    @idea = @agenda.ideas.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @idea }
+    end
+  end
+
   # GET /ideas/new
   # GET /ideas/new.json
   def new
