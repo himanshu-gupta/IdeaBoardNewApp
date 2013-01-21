@@ -1,8 +1,11 @@
 <table>
   <tr>
-  	<td width='550' bgcolor='#eee'><%= @idea.description %></td>
+  	<td width='550' align='center'><%= link_to 'Back', agenda_path(@agenda.id) %></td>
   </tr> 
   <tr>
-  	<td align='center'><%= link_to 'Back', agenda_path(@agenda.id) %></td>
+  	<td width='550' height='20'></td>
+  </tr> 
+  <tr>
+  	<td width='550' bgcolor='#eee'><%= @idea.description %></td>
   </tr> 
 </table>
