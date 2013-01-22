@@ -4,29 +4,29 @@ Heroku link : http://idea-board.herokuapp.com/
 
                                             Idea Board
 
-Purpose : This application lets people contribute their ideas on a topic added on the home page.
-
+Purpose : 
+  This application lets people contribute their ideas on a topic added on the home page.
 
 Features :
-1) Create account, reset password in case user forgets password
-2) Add a topic
-3) Add idea to a topic
-4) Like any idea (just once though)
-5) Edit/delete topic or idea
-6) Manage roles and profiles
-7) Only limited characters of idea visible on the topic's main page. 'Read More' link will display complete idea.
+  1) Create account, reset password in case user forgets password
+  2) Add a topic
+  3) Add idea to a topic
+  4) Like any idea (just once though)
+  5) Edit/delete topic or idea
+  6) Manage roles and profiles
+  7) Only limited characters of idea visible on the topic's main page. 'Read More' link will display complete idea.
 
-Note: Some of these features are restricted for some users. Priviledges list is mentioned below.
+  Note: Some of these features are restricted for some users. Priviledges list is mentioned below.
 
 
 User Previledges:
-A) Normal User (Without login)
-  1) can create an account
-  2) can add a topic.
-  3) can give idea on any topic.
-B) Normal User (At login)
-  1) can like an idea only once.
-C) Admin login
-  1) can edit or delete any topic.
-  2) can delete any idea.
-  3) can view and change role of created profiles from 'user'->'admin' or vice-versa.
+  A) Normal User (Without login)
+    1) can create an account
+    2) can add a topic.
+    3) can give idea on any topic.
+  B) Normal User (At login)
+    1) can like an idea only once.
+  C) Admin login
+    1) can edit or delete any topic.
+    2) can delete any idea.
+    3) can view and change role of created profiles from 'user'->'admin' or vice-versa.
