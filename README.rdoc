@@ -5,7 +5,7 @@ Heroku link : http://idea-board.herokuapp.com/
                                             Idea Board
 
 Purpose : 
-  This application lets people contribute their ideas on a topic added on the home page.
+  This application lets people contribute their ideas on a topic.
 
 Features :
   1) Create account, reset password in case user forgets password
