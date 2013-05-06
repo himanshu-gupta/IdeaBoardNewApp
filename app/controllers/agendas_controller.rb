@@ -10,8 +10,21 @@ class AgendasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agendas }
-      format.csv { send_data @agendas.agendas_to_csv }
       format.xls
+    end
+  end
+
+  def my_topics
+    @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC").page(params[:page]).per(15)
+    respond_to do |format|
+      format.html { render :template => "agendas/index"}
+    end
+  end
+
+  def popular_topics
+    @agendas = Agenda.order("agendas.ideas_count DESC").page(params[:page]).per(15)
+    respond_to do |format|
+      format.html { render :template => "agendas/index"}
     end
   end
 
@@ -23,10 +36,6 @@ class AgendasController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @agenda }
-      format.csv {  send_data @ideas.ideas_to_csv
-#        , :type => 'text/csv; charset=iso-8859-1; header=present', 
-#          :disposition => "attachment; filename=ideas.csv" 
-      }
       format.xls
     end
   end
@@ -50,6 +59,7 @@ class AgendasController < ApplicationController
   # POST /agendas.json
   def create
     @agenda = Agenda.new(params[:agenda])
+    @agenda.user_id = current_user.id if current_user.present?
     respond_to do |format|
       if @agenda.save
         format.html { redirect_to @agenda, notice: 'Congratulations!!! Topic created successfully.'}
@@ -88,11 +98,7 @@ class AgendasController < ApplicationController
     @agenda = Agenda.find(params[:id])
     @agenda.destroy
     respond_to do |format|
-      format.html { 
-        flash[:notice] = 'Topic deleted successfully .'
-        redirect_to agendas_url
-      }
-      format.json { head :no_content }
+      format.js
     end
   end
 

@@ -1,40 +1,28 @@
 <h2>List of Topics</h2>
 
 <p>
-  <%= link_to "Export to CSV", agendas_path(format: "csv") %> |
-  <%= link_to "Export to Excel", agendas_path(format: "xls") %>
+  <%= link_to "Export to Excel", agendas_path(:format => "xls") if @agendas.present? %>
 </p>
 
-<table> 
-  <% @@count = 0 %>
+<table class="agenda_list"> 
+  <% count = 0 %>
   <% @agendas.each do |agenda| %>
-  <tr>
+  <% if count % 2 == 0 %>
+    <tr bgcolor='#eee' id="<%= agenda.id%>">
+  <% else %>
+    <tr id="<%= agenda.id%>">
+  <% end %>
   	<td width='50'></td>
-    <% if @@count % 2 == 0%>
-    <td width='350' bgcolor='#eee'><%= agenda.title %></td>
-    <td width='5' bgcolor='#eee'>by</td>
-    <td width='75' bgcolor='#eee'><b><i><%= agenda.owner %></i></b></td>
-    <% else %>
     <td width='350'><%= agenda.title %></td>
     <td width='5'>by</td>
     <td width='75'><b><i><%= agenda.owner %></i></b></td>
-    <% end %>
     <td> | <%= link_to image_tag( 'lightbulb_add.png', :border=>0, :title=>'Add Idea', :size=>'18x18'), agenda %> <b>(<%= agenda.ideas.count%> ideas)</b></td>
     <% if user_signed_in? && current_user.role == "admin" %>
       <td> | <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit'), edit_agenda_path(agenda) %></td>
-      <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), agenda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), agenda, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></td>
     <% end %>
-  </tr><!--
-  <tr>
-  	<td></td>
-    <td colspan=7><div class="idea-separator round"></div></td>
-  </tr>-->
-  <% @@count = @@count + 1 %>
+  </tr>
+  <% count = count + 1 %>
   <% end %>
-  <tr height='10'>
-  </tr>
-  <tr>
-    <td colspan=7 align=center><div class="create-button round"><%= link_to 'New Topic', new_agenda_path %></div></td>
-  </tr>
 </table>
 <%= paginate @agendas %>

@@ -5,6 +5,9 @@ IdeaBlockApp::Application.routes.draw do
   devise_for :users
   resources :users
 
+  match 'my_topics' => 'agendas#my_topics'
+  match 'popular_topics' => 'agendas#popular_topics'
+
   resources :agendas do
 	 resources :ideas
 	end

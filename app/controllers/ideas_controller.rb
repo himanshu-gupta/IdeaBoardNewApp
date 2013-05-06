@@ -25,7 +25,8 @@ class IdeasController < ApplicationController
   # POST /ideas
   # POST /ideas.json
   def create    
-    @idea = @agenda.ideas.create(params[:idea])	
+    @idea = @agenda.ideas.create(params[:idea])
+    @agenda.update_attributes({"ideas_count" => @agenda.ideas.count + 1})	
     respond_to do |format|
       if @idea.save
         format.html { redirect_to agenda_path(@agenda), notice: 'Bingo!!! Your idea has been accepted.' }
@@ -44,24 +45,20 @@ class IdeasController < ApplicationController
   # PUT /ideas/1.json
   def update        
     @idea = @agenda.ideas.find(params[:id])
-    @like = Like.find_by_sql(["select * from likes where user_id = ? and agenda_id = ?  and idea_id = ?", current_user.id, @agenda.id, @idea.id])
-    if @like.size == 0
-      @like_new = Like.new(params[:like])
+    if params[:liked].nil?
+      @like_new = Like.new
       @like_new.user_id = current_user.id
       @like_new.agenda_id = @agenda.id
       @like_new.idea_id = @idea.id
       @like_new.save
-      if @idea.likes == nil
-        @idea.likes = 1
-      else
-        @idea.likes += 1
-      end 
-      @idea.update_attribute(:likes, @idea.likes)
-      redirect_to agenda_path(@agenda)
+      likes = @idea.likes + 1
     else
-      flash[:error] = 'You have already liked the idea.'
-      redirect_to agenda_path(@agenda)
+      @liked = Like.find(params[:liked])
+      @liked.destroy
+      likes = @idea.likes - 1
     end
+    @idea.update_attribute(:likes, likes)
+    redirect_to agenda_path(@agenda)
   end
 
   # DELETE /ideas/1
@@ -70,8 +67,7 @@ class IdeasController < ApplicationController
     @idea = @agenda.ideas.find(params[:id])
     @idea.destroy
 	  respond_to do |format|
-      format.html { redirect_to agenda_path(@agenda), notice: 'Idea deleted successfully.'  }
-      format.json { head :no_content }
+      format.js
     end
   end
   

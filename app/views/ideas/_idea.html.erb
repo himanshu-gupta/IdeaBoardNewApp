@@ -1,18 +1,20 @@
 <table>
-  <tr>
+  <tr id="<%= idea.id%>">
     <% if idea.description.length > 250 %>
   	  <td width='550' bgcolor='#eee'><%= idea.description.first(250) %>.. <%= link_to 'Read More', agenda_idea_path(@agenda.id, idea.id) %></td>
     <% else %>
       <td width='550' bgcolor='#eee'><%= idea.description %></td>
     <% end %>
   	<td> | Likes</td>
-    <% idea.likes == nil ? idea.likes = 0 : idea.likes = idea.likes %>
     <td><%= idea.likes %></td>
-    <% if user_signed_in? %>
+    <% liked = Like.find(:first, :conditions => ["user_id = ? and agenda_id = ?  and idea_id = ?", current_user.id, @agenda.id, idea.id]) if current_user.present? %>
+    <% if user_signed_in? && liked.nil? %>
       <td> | <%= link_to image_tag( 'like.gif', :border=>0, :title=>'Like'), agenda_idea_path(@agenda.id, idea.id), :method => :put %></td>
+    <% elsif user_signed_in? && liked.present? %>
+      <td> | <%= link_to 'Unlike', agenda_idea_path(@agenda.id, idea.id, :liked => liked.id), :method => :put %></td>
     <% end %>
     <% if user_signed_in? && current_user.role == "admin" %>
-      <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), [idea.agenda, idea], :confirm => 'Are you sure?', :method => :delete %></td>
+      <td> | <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete'), [idea.agenda, idea], :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
     <% end %>
   </tr>
   <tr>

@@ -4,8 +4,8 @@
 
 <p>
   <b>Ideas so far : </b>
-  <b><%= @agenda.ideas.count %></b>
-  <%= link_to "(Export to Excel)", agenda_path(format: "xls", method: "show") %>
+  <b><%= @agenda.ideas_count %></b>
+  <%= link_to "(Export to Excel)", agenda_path(format: "xls", method: "show") if @agenda.ideas_count > 0 %>
 </p>
 
 <%= render @agenda.ideas %>

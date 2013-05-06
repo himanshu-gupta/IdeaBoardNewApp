@@ -11,21 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118111217) do
+ActiveRecord::Schema.define(:version => 20130504091723) do
 
   create_table "agendas", :force => true do |t|
     t.string   "title"
     t.string   "owner"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "user_id"
+    t.integer  "ideas_count",                :default => 0
   end
 
   create_table "ideas", :force => true do |t|
     t.text     "description"
-    t.integer  "likes"
+    t.integer  "likes",                      :default => 0
     t.integer  "agenda_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "ideas", ["agenda_id"], :name => "index_ideas_on_agenda_id"
