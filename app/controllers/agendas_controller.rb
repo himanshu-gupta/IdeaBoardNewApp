@@ -6,7 +6,7 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.order("agendas.created_at DESC").page(params[:page]).per(15)
+    @agendas = Agenda.order("agendas.created_at DESC").page(params[:page]).per(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agendas }
@@ -15,14 +15,14 @@ class AgendasController < ApplicationController
   end
 
   def my_topics
-    @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC").page(params[:page]).per(15)
+    @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC").page(params[:page]).per(10)
     respond_to do |format|
       format.html { render :template => "agendas/index"}
     end
   end
 
   def popular_topics
-    @agendas = Agenda.order("agendas.ideas_count DESC").page(params[:page]).per(15)
+    @agendas = Agenda.order("agendas.ideas_count DESC").page(params[:page]).per(10)
     respond_to do |format|
       format.html { render :template => "agendas/index"}
     end

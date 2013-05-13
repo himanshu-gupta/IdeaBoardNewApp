@@ -9,6 +9,8 @@ lightbulb_add.png: lightbulb_add-a7cbaf8af9761e6e6fec15816ccf3cf9.png
 lightbulb_add/index.png: lightbulb_add-a7cbaf8af9761e6e6fec15816ccf3cf9.png
 like.gif: like-4b7734665002c84dcc99879cb9ac16d8.gif
 like/index.gif: like-4b7734665002c84dcc99879cb9ac16d8.gif
+like.jpg: like-0e7a543d3f8ff14c0e48298ca95d957b.jpg
+like/index.jpg: like-0e7a543d3f8ff14c0e48298ca95d957b.jpg
 loginin.jpg: loginin-b0cae1a65a55cc9ef216b6213c7108cd.jpg
 loginin/index.jpg: loginin-b0cae1a65a55cc9ef216b6213c7108cd.jpg
 logout.jpg: logout-4b24e29ac222278d8d63788c1405c69e.jpg
@@ -17,7 +19,11 @@ rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 show.gif: show-6a8126c26e528daf417010eabe973b82.gif
 show/index.gif: show-6a8126c26e528daf417010eabe973b82.gif
+unlike.jpg: unlike-68efec56129b3b47810cbabecce006b6.jpg
+unlike/index.jpg: unlike-68efec56129b3b47810cbabecce006b6.jpg
+unlike.png: unlike-448dd5af6ef8c7cce9d0c79e401fac75.png
+unlike/index.png: unlike-448dd5af6ef8c7cce9d0c79e401fac75.png
 application.js: application-acf7f1c29f1851a8a7fd8a9ef66249b7.js
 application/index.js: application-acf7f1c29f1851a8a7fd8a9ef66249b7.js
-application.css: application-9476b5b6ddc458bbd230354bfbc88e34.css
-application/index.css: application-9476b5b6ddc458bbd230354bfbc88e34.css
+application.css: application-fc036a69c0f1a5153bcc92efbfe52ae3.css
+application/index.css: application-fc036a69c0f1a5153bcc92efbfe52ae3.css

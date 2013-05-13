@@ -15,6 +15,7 @@ gem "shoulda-matchers"
 gem 'factory_girl'
 
 gem 'devise'
+#gem 'will_paginate'
 gem 'kaminari'
 
 # Gems used only for assets and not required
