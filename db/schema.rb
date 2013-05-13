@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(:version => 20130504091723) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "user_id"
-    t.integer  "ideas_count",                :default => 0
+    t.integer  "ideas_count", :default => 0
   end
 
   create_table "ideas", :force => true do |t|
     t.text     "description"
-    t.integer  "likes",                      :default => 0
+    t.integer  "likes",       :default => 0
     t.integer  "agenda_id"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false

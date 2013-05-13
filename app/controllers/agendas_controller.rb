@@ -6,7 +6,12 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.json
   def index
-    @agendas = Agenda.order("agendas.created_at DESC").page(params[:page]).per(10)
+    if params[:format] == "xls"
+      @agendas = Agenda.order("agendas.created_at DESC")
+    else
+      @all_topics = true
+      @agendas = Agenda.order("agendas.created_at DESC").page(params[:page]).per(10)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agendas }
@@ -15,16 +20,28 @@ class AgendasController < ApplicationController
   end
 
   def my_topics
-    @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC").page(params[:page]).per(10)
+    if params[:format] == "xls"
+      @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC")
+    else
+      @my_topics = true
+      @agendas = Agenda.where(:user_id => current_user.id).order("agendas.created_at DESC").page(params[:page]).per(10)
+    end
     respond_to do |format|
       format.html { render :template => "agendas/index"}
+      format.xls { render :template => "agendas/index"}
     end
   end
 
   def popular_topics
-    @agendas = Agenda.order("agendas.ideas_count DESC").page(params[:page]).per(10)
+    if params[:format] == "xls"
+      @agendas = Agenda.order("agendas.ideas_count DESC")
+    else
+      @popular_topics = true
+      @agendas = Agenda.order("agendas.ideas_count DESC").page(params[:page]).per(10)
+    end
     respond_to do |format|
       format.html { render :template => "agendas/index"}
+      format.xls { render :template => "agendas/index"}
     end
   end
 
@@ -32,7 +49,7 @@ class AgendasController < ApplicationController
   # GET /agendas/1.json
   def show
     @agenda = Agenda.find(params[:id])
-    @ideas= @agenda.ideas #.where("")
+    @ideas= @agenda.ideas
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @agenda }

@@ -24,9 +24,9 @@ class IdeasController < ApplicationController
 
   # POST /ideas
   # POST /ideas.json
-  def create    
+  def create
+    @agenda.update_attributes({"ideas_count" => @agenda.ideas.count + 1})    
     @idea = @agenda.ideas.create(params[:idea])
-    @agenda.update_attributes({"ideas_count" => @agenda.ideas.count + 1})	
     respond_to do |format|
       if @idea.save
         format.html { redirect_to agenda_path(@agenda), notice: 'Bingo!!! Your idea has been accepted.' }
@@ -63,7 +63,8 @@ class IdeasController < ApplicationController
 
   # DELETE /ideas/1
   # DELETE /ideas/1.json
-  def destroy    
+  def destroy
+    @agenda.update_attributes({"ideas_count" => @agenda.ideas.count - 1})    
     @idea = @agenda.ideas.find(params[:id])
     @idea.destroy
 	  respond_to do |format|

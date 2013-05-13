@@ -1,4 +1,6 @@
-<%= link_to "Export to Excel", agendas_path(:format => "xls") if @agendas.present? %>
+<%= link_to "Export to Excel", agendas_path(:format => "xls") if @agendas.present? && @all_topics.present? %>
+<%= link_to "Export to Excel", popular_topics_path(:format => "xls") if @agendas.present? && @popular_topics.present? %>
+<%= link_to "Export to Excel", my_topics_path(:format => "xls") if @agendas.present? && @my_topics.present? %>
 <table class="agenda_list">
   <tr style="background:#71ACDD;">
     <th>Topic Title</th>

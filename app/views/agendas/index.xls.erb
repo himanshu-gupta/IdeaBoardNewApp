@@ -7,22 +7,17 @@
   <Worksheet ss:Name="Topics">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String"></Data></Cell>
-        <Cell><Data ss:Type="String"><b><i>List of Topics</i></b></Data></Cell>
-        <Cell><Data ss:Type="String"></Data></Cell>
-      </Row>
-      <Row>
-      </Row>
-      <Row>
-        <Cell><Data ss:Type="String">Topic ID</Data></Cell>
-        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Topic Title</Data></Cell>
         <Cell><Data ss:Type="String">Owner</Data></Cell>
+        <Cell><Data ss:Type="String">Creation Date</Data></Cell>
+        <Cell><Data ss:Type="String">Number of ideas</Data></Cell>
       </Row>
     <% @agendas.each do |agenda| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= agenda.id %></Data></Cell>
         <Cell><Data ss:Type="String"><%= agenda.title %></Data></Cell>
         <Cell><Data ss:Type="String"><%= agenda.owner %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= agenda.created_at.to_datetime.strftime("%b %e at %H:%M ") %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= agenda.ideas.count %></Data></Cell>
       </Row>
     <% end %>
     </Table>
